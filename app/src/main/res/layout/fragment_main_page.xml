@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="toolbartitle"
+            type="String" />
+
+        <variable
+            name="mylayoutadapter"
+            type="com.example.peopleapplications_mvvm.ui.fragments.adapter.Adapter" />
+
+       <variable
+           name="homepagefragment"
+           type="com.example.peopleapplications_mvvm.ui.fragments.MainPageFragment" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.fragments.MainPageFragment">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_mainpage"
+            android:layout_width="0dp"
+
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:title="@{toolbartitle}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="39dp"
+            android:layout_marginBottom="43dp"
+            android:backgroundTint="@color/design_default_color_error"
+            android:clickable="true"
+            android:src="@drawable/baseline_add_circle_outline_24"
+            app:fabSize="auto"
+            android:onClick="@{()->homepagefragment.fabclick(floatingActionButton)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@color/white" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycelview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:adapter="@{mylayoutadapter}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_mainpage"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
